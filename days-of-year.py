@@ -57,7 +57,8 @@ def day_of_year(year, month, day):
     last_digits_year = last_digits_year[-2] + last_digits_year[-1] #Take the last 2 digits from year
     last_digits_year = int(last_digits_year)    
     year_code = (last_digits_year + (last_digits_year // 4)) % 7
-   
+    print('Year code:')
+    print(year_code)
     #Month Code
     year = int(year)
     if is_year_leap(year) == False:
@@ -111,30 +112,38 @@ def day_of_year(year, month, day):
         if month == 12:
             month_code = 5
     
+    print('Month code:')
+    print(month_code)
     #Century Code
     year = int(year)
-    if year >= 1700 & year < 1800:
+    if year >= 1700 and year < 1800:
         century_code = 4
-    if year >= 1800 & year < 1900:
+    elif year >= 1800 and year < 1900:
         century_code = 2
-    if year >= 1900 & year < 2000:
+    elif year >= 1900 and year < 2000:
         century_code = 0
-    if year >= 2000 & year < 2100:
+    elif year >= 2000 and year < 2100:
         century_code = 6
-    if year >= 2100 & year < 2200:
+    elif year >= 2100 and year < 2200:
         century_code = 4
-    if year >= 2200 & year < 2300:
+    elif year >= 2200 and year < 2300:
         century_code = 2
-    
+
+    print('Century code:')
+    print(century_code)
     #Leap Year Code
     if is_year_leap(year) == True:
-        if month == 1 | month == 2:
+        if month == 1:
+            leap_year_code = 1
+        elif  month == 2:
             leap_year_code = 1
         else:
             leap_year_code = 0
     else:
         leap_year_code = 0
         
+    print('Leap Year code:')
+    print(leap_year_code)
     #Calculating the Day
     calculating_day = (year_code + month_code + century_code + day - leap_year_code) % 7
     print(calculating_day)
@@ -156,6 +165,5 @@ def day_of_year(year, month, day):
 input_year = int(input("Write a year: "))
 input_month = int(input("Write a month: "))
 input_day = int(input("Write a day: "))
-
 
 print(day_of_year(input_year, input_month, input_day))

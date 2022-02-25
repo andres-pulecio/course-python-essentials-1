@@ -1,12 +1,12 @@
-from pickle import TRUE
-
+# Scenario
+# Your task is to write and test a function which takes one argument (a year) and returns 
+# True if the year is a leap year, or False otherwise.
+# The seed of the function is already sown in the skeleton code in the editor.
+# Note: we've also prepared a short testing code, which you can use to test your function.
+# The code uses two lists - one with the test data, and the other containing the expected results. 
+# The code will tell you if any of your results are invalid.
 
 def is_year_leap(year):
-# Si el año es uniformemente divisible por 4, vaya al paso 2. De lo contrario, vaya al paso 5.
-# Si el año es uniformemente divisible por 100, vaya al paso 3. De lo contrario, vaya al paso 4.
-# Si el año es uniformemente divisible por 400, vaya al paso 4. De lo contrario, vaya al paso 5.
-# El año es un año bisiesto (tiene 366 días).
-# El año no es un año bisiesto (tiene 365 días).
     if year % 4 == 0:
         if year % 100 == 0:
             if year % 400 == 0:

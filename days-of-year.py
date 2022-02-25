@@ -1,4 +1,12 @@
-from turtle import st
+# Scenario
+# Your task is to write and test a function which takes three arguments 
+# (a year, a month, and a day of the month) and returns the corresponding day of the year,
+# or returns None if any of the arguments is invalid.
+# Use the previously written and tested functions. Add some test cases to the code.
+# This test is only a beginning.
+
+from calendar import SUNDAY
+from http.client import SWITCHING_PROTOCOLS
 
 
 def is_year_leap(year):
@@ -49,9 +57,105 @@ def day_of_year(year, month, day):
     last_digits_year = last_digits_year[-2] + last_digits_year[-1] #Take the last 2 digits from year
     last_digits_year = int(last_digits_year)    
     year_code = (last_digits_year + (last_digits_year // 4)) % 7
+   
+    #Month Code
+    year = int(year)
+    if is_year_leap(year) == False:
+        if month == 1:
+            month_code = 0
+        if month == 2:
+            month_code = 3
+        if month == 3:
+            month_code = 3
+        if month == 4:
+            month_code = 6
+        if month == 5:
+            month_code = 1
+        if month == 6:
+            month_code = 4
+        if month == 7:
+            month_code = 6
+        if month == 8:
+            month_code = 2
+        if month == 9:
+            month_code = 5
+        if month == 10:
+            month_code = 0
+        if month == 11:
+            month_code = 3
+        if month == 12:
+            month_code = 5
+    else:
+        if month == 1:        
+            month_code = 6
+        if month == 2:
+            month_code = 2
+        if month == 3:
+            month_code = 3
+        if month == 4:
+            month_code = 6
+        if month == 5:
+            month_code = 1
+        if month == 6:
+            month_code = 4
+        if month == 7:
+            month_code = 6
+        if month == 8:
+            month_code = 2
+        if month == 9:
+            month_code = 5
+        if month == 10:
+            month_code = 0
+        if month == 11:
+            month_code = 3
+        if month == 12:
+            month_code = 5
     
-    #
+    #Century Code
+    year = int(year)
+    if year >= 1700 & year < 1800:
+        century_code = 4
+    if year >= 1800 & year < 1900:
+        century_code = 2
+    if year >= 1900 & year < 2000:
+        century_code = 0
+    if year >= 2000 & year < 2100:
+        century_code = 6
+    if year >= 2100 & year < 2200:
+        century_code = 4
+    if year >= 2200 & year < 2300:
+        century_code = 2
     
-    print(year_code)
+    #Leap Year Code
+    if is_year_leap(year) == True:
+        if month == 1 | month == 2:
+            leap_year_code = 1
+        else:
+            leap_year_code = 0
+    else:
+        leap_year_code = 0
+        
+    #Calculating the Day
+    calculating_day = (year_code + month_code + century_code + day - leap_year_code) % 7
+    print(calculating_day)
+    if calculating_day == 0:
+        return "Sunday"
+    if calculating_day == 1:
+        return "Monday"
+    if calculating_day == 2:
+        return "Tuesday"
+    if calculating_day == 3:
+        return "Wednesday"
+    if calculating_day == 4:
+        return "Thursday"
+    if calculating_day == 5:
+        return "Friday"
+    if calculating_day == 6:
+        return "Saturday"
+    
+input_year = int(input("Write a year: "))
+input_month = int(input("Write a month: "))
+input_day = int(input("Write a day: "))
 
-print(day_of_year(1897, 12, 31))
+
+print(day_of_year(input_year, input_month, input_day))

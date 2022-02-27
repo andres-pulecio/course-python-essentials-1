@@ -32,8 +32,6 @@ def is_prime(num):
     else:
         return False
 
-# print(is_prime(11))
-
 for i in range(1, 20):
 	if is_prime(i + 1):
 			print(i + 1, end=" ")

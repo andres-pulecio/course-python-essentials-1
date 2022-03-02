@@ -154,14 +154,33 @@
 def display_board(board):
     # The function accepts one parameter containing the board's current status
     # and prints it out to the console.
-    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
-    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
-    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
-    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
-    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
-    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
-    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
 
+    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    # print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
+    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    # print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
+    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    # print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
+    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+
+    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    
+    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 1, end="")
+    print(("|" + " " * 3 + board[0] + " " * 3 + "|" + " " * 3 + board[1] + " " * 3 + "|" + " " * 3 + board[2] + " " * 3 + "|\n") * 1, end="")
+    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 1, end="")
+    
+    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 1, end="")
+    print(("|" + " " * 3 + board[3] + " " * 3 + "|" + " " * 3 + board[4] + " " * 3 + "|" + " " * 3 + board[5] + " " * 3 + "|\n") * 1, end="")
+    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 1, end="")
+    
+    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 1, end="")
+    print(("|" + " " * 3 + board[6] + " " * 3 + "|" + " " * 3 + board[7] + " " * 3 + "|" + " " * 3 + board[8] + " " * 3 + "|\n") * 1, end="")
+    print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 1, end="")
+    
+    print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
+    
 # def enter_move(board):
     # The function accepts the board's current status, asks the user about their move, 
     # checks the input, and updates the board according to the user's decision.
@@ -179,5 +198,5 @@ def display_board(board):
 
 # def draw_move(board):
     # The function draws the computer's move and updates the board.
-    
-display_board(2)
+status_game = ["1","2","3","4","x","6","7","8","9"]
+display_board(status_game)

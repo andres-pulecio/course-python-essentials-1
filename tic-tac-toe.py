@@ -151,17 +151,13 @@
 # for i in range(10):
 #     print(randrange(8))
 
+from multiprocessing.dummy import freeze_support
+from random import randrange
+
+
 def display_board(board):
     # The function accepts one parameter containing the board's current status
     # and prints it out to the console.
-
-    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
-    # print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
-    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
-    # print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
-    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
-    # print(("|" + " " * 7 + "|" + " " * 7 + "|" + " " * 7 + "|\n") * 3, end="")
-    # print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
 
     print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
     
@@ -181,22 +177,48 @@ def display_board(board):
     
     print("+" + 7 * "-" + "+" + 7 * "-" + "+" + 7 * "-" + "+")
     
-# def enter_move(board):
+def enter_move():
     # The function accepts the board's current status, asks the user about their move, 
     # checks the input, and updates the board according to the user's decision.
+    new_move = int(input("Enter your move: "))
+    if new_move >= 1 and new_move <= 9:
+        status_game[new_move - 1] = "0"
+        display_board(status_game)
+    else:
+        print("Write a number betewen 1 and 9:")    
 
-
-# def make_list_of_free_fields(board):
+def make_list_of_free_fields(board):
     # The function browses the board and builds a list of all the free squares; 
     # the list consists of tuples, while each tuple is a pair of row and column numbers.
-
+    free_squares = 9
+    for i in range (9): 
+        if board[i]=='x' or board[i]=='0':
+            free_squares -= 1
+    return free_squares
 
 # def victory_for(board, sign):
     # The function analyzes the board's status in order to check if 
     # the player using 'O's or 'X's has won the game
 
 
-# def draw_move(board):
+def draw_move(board):
     # The function draws the computer's move and updates the board.
-status_game = ["1","2","3","4","x","6","7","8","9"]
-display_board(status_game)
+    ramdom = True
+    iteration = 0
+    while ramdom:
+        move_ramdom = randrange(0,9)
+        if board[move_ramdom -1 ]=='x' or board[move_ramdom - 1]=='0':
+            move_ramdom = randrange(0,9)
+        else:
+            status_game[move_ramdom - 1] = 'x'
+            ramdom = False
+    print('Computer move:' ,move_ramdom)
+    display_board(board)
+    
+global status_game
+status_game = ["1","2","3","4","x","6","7","8","9"] 
+
+
+while make_list_of_free_fields(status_game) > 0:
+    enter_move()
+    draw_move(status_game)

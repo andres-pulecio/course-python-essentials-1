@@ -153,6 +153,7 @@
 
 from multiprocessing.dummy import freeze_support
 from random import randrange
+from turtle import st
 
 
 def display_board(board):
@@ -180,12 +181,14 @@ def display_board(board):
 def enter_move():
     # The function accepts the board's current status, asks the user about their move, 
     # checks the input, and updates the board according to the user's decision.
+    
     new_move = int(input("Enter your move: "))
-    if new_move >= 1 and new_move <= 9:
+    if new_move >= 1 and new_move <= 9 and status_game[new_move -1 ] != "x" and status_game[new_move - 1] != "0":
         status_game[new_move - 1] = "0"
         display_board(status_game)
     else:
-        print("Write a number betewen 1 and 9:")    
+        print("Play not allowed")
+        enter_move()
 
 def make_list_of_free_fields(board):
     # The function browses the board and builds a list of all the free squares; 
@@ -196,10 +199,53 @@ def make_list_of_free_fields(board):
             free_squares -= 1
     return free_squares
 
-# def victory_for(board, sign):
+def victory_for(board):
     # The function analyzes the board's status in order to check if 
     # the player using 'O's or 'X's has won the game
-
+    if board[0]=='0' and board[1]=='0' and board[2]=='0':
+        print('You win!')  
+        return False
+    elif board[2]=='0' and board[5]=='0' and board[8]=='0':
+        print('You win!')  
+        return False
+    elif board[6]=='0' and board[7]=='0' and board[8]=='0':
+        print('You win!')  
+        return False
+    elif board[0]=='0' and board[3]=='0' and board[6]=='0':
+        print('You win!')  
+        return False
+    
+    elif board[0]=='x' and board[1]=='x' and board[2]=='x':
+        print('Computer win!')
+        return False
+    elif board[2]=='x' and board[5]=='x' and board[8]=='x':
+        print('Computer win!')
+        return False
+    elif board[6]=='x' and board[7]=='x' and board[8]=='x':
+        print('Computer win!')
+        return False
+    elif board[0]=='x' and board[3]=='x' and board[6]=='x':
+        print('Computer win!')
+        return False
+    elif board[1]=='x' and board[4]=='x' and board[7]=='x':
+        print('Computer win!')
+        return False
+    elif board[3]=='x' and board[4]=='x' and board[5]=='x':
+        print('Computer win!')
+        return False
+    elif board[0]=='x' and board[4]=='x' and board[8]=='x':
+        print('Computer win!')
+        return False
+    elif board[2]=='x' and board[4]=='x' and board[6]=='x':
+        print('Computer win!')
+        return False
+    
+    elif make_list_of_free_fields(status_game) == 0:
+        print('Tied game!')
+        return False
+        
+    else:
+        return True
 
 def draw_move(board):
     # The function draws the computer's move and updates the board.
@@ -218,7 +264,8 @@ def draw_move(board):
 global status_game
 status_game = ["1","2","3","4","x","6","7","8","9"] 
 
-
-while make_list_of_free_fields(status_game) > 0:
+display_board(status_game)
+while victory_for(status_game):
+    victory_for(status_game)
     enter_move()
     draw_move(status_game)
